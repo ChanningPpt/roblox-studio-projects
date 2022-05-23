@@ -1,0 +1,14 @@
+local spawns = game.Workspace.Spawns -- spawners
+local zombies = game.Workspace.Zombies -- zombies
+local spawnTime = 10
+
+while true do
+	wait(spawnTime)
+	for _, spawnPart in pairs(spawns:GetChildren()) do
+		if spawnPart:IsA('BasePart') then
+			local zombieClone = game.ReplicatedStorage('Drooling Zombie'):Clone()
+			zombieClone.parent = zombies
+			zombieClone.HumanoidRootPart.CFrame = CFrame.new(spawnPart.position + Vector3.new(0,3,0))
+		end
+	end
+end
